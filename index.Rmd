@@ -1,0 +1,92 @@
+---
+title: "Reporte Financiero Hope Ecuador"
+author: "Ministerio Financiero"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+Este documento muestra las estadísticas generales del estado financiero de la iglesia **HOPE ECUADOR**
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(readxl) #maneja los archivos de excel
+library(magrittr) #permite usar pipes %>% en el código
+
+registro <- read_excel("registro.xls", range = cell_cols("A:J")) #lee el excel de las columnas A a la J y lo guarda en el dataframe registro
+ingreso <- registro[registro$`Ingreso/Gasto`=="Ingreso",] #guarda solo los registros que dicen Ingreso
+gasto <- registro[registro$`Ingreso/Gasto`=="Gasto",] #guarda solo los registros que dicen Gasto
+```
+
+El saldo al día **`r format(Sys.time(), '%d %B, %Y')`** es: **`r sum(ingreso$USD)-sum(gasto$USD)-4.87`** dolares
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+#El codigo en linea se lo coloca con dos asteriscos y el acento a la izquierda
+
+library(plotly) #libreria para graficar
+
+data_i <- ingreso[,c("Categoría","USD")]  #crea un data frame solo con la categoria y el valor
+data_i %>% rename( categoria = `Categoría`) #cambia el nombre a la columna del data frame pasando los datos por la funcion por medio de pipe
+fig_i <- plot_ly(data_i, labels = ~Categoría, values = ~USD, type = 'pie') #crea una figura de pastel con las categorias y los valores
+fig_i <- fig_i %>% layout(title = 'Ingresos totales',xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE), yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)) #crea el layout de la figura
+```
+# Ingresos
+
+```{r echo=FALSE, warning=FALSE}
+fig_i
+```
+```{r, include=FALSE}
+library(plotly)
+
+data_g <- gasto[,c("Categoría","USD")]
+data_g %>% rename( categoria = `Categoría`)
+fig_g <- plot_ly(data_g, labels = ~Categoría, values = ~USD, type = 'pie')
+fig_g <- fig_g %>% layout(title = 'Gastos totales',xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE), yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+```
+
+# Gastos
+```{r, echo=FALSE}
+fig_g
+```
+
+# Balance
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(lubridate)
+
+bymonth_i <- aggregate(USD~month(Fecha),data=ingreso,FUN=sum)
+bymonth_i <- bymonth_i %>% rename(Fecha = `month(Fecha)`)
+bymonth_i <- bymonth_i %>% rename(Ingreso = USD)
+
+bymonth_g <- aggregate(USD~month(Fecha),data=gasto,FUN=sum)
+bymonth_g <- bymonth_g %>% rename(Fecha = `month(Fecha)`)
+bymonth_g <- bymonth_g %>% rename(Gasto = `USD`)
+
+bymonth <- cbind(bymonth_i,bymonth_g$Gasto) %>% rename(Gasto = `bymonth_g$Gasto`)
+
+index <- c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", 
+           "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre")
+bymonth$MonthAbb <- factor(index[bymonth$Fecha],levels=index[1:nrow(bymonth)])
+
+
+fig <- plot_ly(bymonth, x = ~MonthAbb, y = ~Ingreso, type = 'bar', name = 'Ingreso', marker = list(color = 'rgb(49,130,189)'))
+fig <- fig %>% add_trace(y = ~Gasto, name = 'Gasto', marker = list(color = 'rgb(204,204,204)'))
+fig <- fig %>% layout(xaxis = list(title = "Fechas", tickangle = -45),
+         yaxis = list(title = ""),
+         margin = list(b = 100),
+         barmode = 'group')
+
+fig
+```
+
+# Detalle del Registro
+```{r, echo=FALSE}
+df<-registro[!(registro$`Ingreso/Gasto`=="Dinero gastado"),]
+library(knitr)
+library(kableExtra)
+kable(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+    scroll_box(width = "100%", height = "400px")
+```
+
+##
+##
