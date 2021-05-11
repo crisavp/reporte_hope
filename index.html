@@ -459,13 +459,13 @@ color: #d14;
   function tryEval(code) {
     var result = null;
     try {
-      result = eval(code);
+      result = eval("(" + code + ")");
     } catch(error) {
       if (!error instanceof SyntaxError) {
         throw error;
       }
       try {
-        result = eval("(" + code + ")");
+        result = eval(code);
       } catch(e) {
         if (e instanceof SyntaxError) {
           throw error;
@@ -2095,6 +2095,230 @@ display: none;
     }
 });
 </script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -2140,6 +2364,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -2251,30 +2476,32 @@ summary {
 
 <h1 class="title toc-ignore">Reporte Financiero Hope Ecuador</h1>
 <h4 class="author">Ministerio Financiero</h4>
-<h4 class="date">24 agosto, 2020</h4>
+<h4 class="date">10 mayo, 2021</h4>
 
 </div>
 
 
 <p>Este documento muestra las estadísticas generales del estado financiero de la iglesia <strong>HOPE ECUADOR</strong></p>
-<p>El saldo al día <strong>24 agosto, 2020</strong> es: <strong>1755.91</strong> dolares</p>
+<p>El saldo al día <strong>10 mayo, 2021</strong> es: <strong>-801.94</strong> dolares</p>
 <div id="ingresos" class="section level1">
 <h1>Ingresos</h1>
-<div id="htmlwidget-086a8681ad5c9f17c299" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-086a8681ad5c9f17c299">{"x":{"visdat":{"867476cd4675":["function () ","plotlyVisDat"]},"cur_data":"867476cd4675","attrs":{"867476cd4675":{"labels":{},"values":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Ingresos totales","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["aporte hope arriendo","diezmos y ofrendas","ofrenda especial","diezmos y ofrendas","ofrenda especial","diezmos y ofrendas","ofrenda especial","ofrenda especial","diezmos y ofrendas","diezmos y ofrendas","interés a favor","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","subarriendo","eventos","eventos","diezmos y ofrendas","aporte hope ayuda","aporte hope arriendo","eventos","eventos","diezmos y ofrendas","diezmos y ofrendas","eventos","eventos","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","interés a favor","aporte hope arriendo","aporte hope ayuda","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","subarriendo","diezmos y ofrendas","diezmos y ofrendas","ofrenda especial","ofrenda especial","ofrenda especial","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","subarriendo","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","ofrenda especial","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","subarriendo","interés a favor","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","subarriendo","subarriendo","subarriendo","diezmos y ofrendas","subarriendo","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","eventos","eventos","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","aporte hope arriendo","diezmos y ofrendas","diezmos y ofrendas","subarriendo","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","subarriendo","diezmos y ofrendas","eventos","diezmos y ofrendas","diezmos y ofrendas","subarriendo","eventos","diezmos y ofrendas","diezmos y ofrendas","diezmos y ofrendas","subarriendo","diezmos y ofrendas","eventos","eventos","diezmos y ofrendas","diezmos y ofrendas","Modificar saldo","diezmos y ofrendas"],"values":[90,20,10,60,10,319,10,10,40,30,0.15,12,18,10,80,5,100,5,5,34,500,110,5,5,5,500,42,5,20,40,2,50,10,15,0.23,200,500,10,20,80,100,20,16,75,100,35,50,50,10,11,80,110,20,20,185,5,10,20,10,50,20,13,20,50,20,10,30,20,25,20,30,20,80,100,0.04,19,20,10,20,50,100,7,20,25.01,40,20,40,100,44,46,100,100,20,100,100,50,8,68.9,17.95,17.15,260,25,37,35,1200,50,6.25,100,100,22.5,129.06,23,48.15,100,30,8.65,100,100,91,13,2,59.11,50,14.7,50,25.15,167,100,100,0.5,10,111.95,14.5,100.12,1.6],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2c8346c2975d7dee05f4" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2c8346c2975d7dee05f4">{"x":{"visdat":{"38d44b295f20":["function () ","plotlyVisDat"]},"cur_data":"38d44b295f20","attrs":{"38d44b295f20":{"labels":{},"values":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Ingresos totales","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["diezmos y ofrendas","diezmos y ofrendas","donación","donación","diezmos y ofrendas","donación","donación","diezmo","donación","ofrenda","donación","donación","donación","donación","diezmo","diezmo","aporte Hope ayuda","aporte Hope arriendo","diezmo","diezmo","donación","diezmo","donación","eventos","diezmo","diezmo","canasta de amor","donación","diezmo","subarriendo","diezmo","ofrenda","donación","diezmo","diezmo","diezmo","donación","donación","donación","donación","diezmo","diezmo","diezmo","subarriendo","diezmo","diezmo","diezmo","diezmo","aporte Hope arriendo","diezmo","diezmo","subarriendo","diezmo","diezmo","diezmo","servicios básicos"],"values":[20,41.96,10,50,50,10,125,15,10,14.32,5,106.75,80,5,80,60,200,200,12,50,134.31,12,3,11,50,15,30,173,40,50,80,10,20,20,15,50,5,25,5,70,150.62,20,35,100,12,23,40,16,400,15,50,100,15,20,40,54],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="gastos" class="section level1">
 <h1>Gastos</h1>
-<div id="htmlwidget-a5b7d3e47488f4511ef3" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5b7d3e47488f4511ef3">{"x":{"visdat":{"86742cf55894":["function () ","plotlyVisDat"]},"cur_data":"86742cf55894","attrs":{"86742cf55894":{"labels":{},"values":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Gastos totales","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["manejo de cuenta","material de trabajo","material de trabajo","ayuda a comunidades","ayuda a comunidades","arriendo","ayuda a comunidades","manejo de cuenta","ayuda a comunidades","ayuda a comunidades","material de trabajo","ofrenda pastor","ofrenda pastor","manejo de cuenta","ayuda a comunidades","arriendo","manejo de cuenta","material de trabajo","arriendo","material de trabajo","material de trabajo","material de trabajo","ayuda a comunidades","manejo de cuenta","arriendo","servicios basicos","manejo de cuenta","ofrenda pastor","manejo de cuenta","manejo de cuenta","manejo de cuenta","arriendo","manejo de cuenta","manejo de cuenta","manejo de cuenta","arriendo","ofrenda pastor","ofrenda pastor","material de trabajo","ofrenda pastor","material de trabajo","material de trabajo","material de trabajo","material de trabajo","material de trabajo","arriendo","ofrenda pastor","ofrenda pastor","material de trabajo","ofrenda pastor","ofrenda pastor","ofrenda pastor","material de trabajo","ofrenda pastor","arriendo","material de trabajo","material de trabajo","ofrenda pastor"],"values":[0.66,33.6,120.25,10,10,300,600,0.66,103.47,45.84,22.5,300,525,0.44,600,300,2.38,34,300,40,3.89,46.66,100,0.88,300,150,0.44,100,0.22,0.22,0.22,300,0.22,0.22,1.17,600,100,75,23.33,100,14.4,10,10,10.35,276.25,600,25,25,23.33,25,25,100,1,25,600,31.34,11.95,25],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7496ef4df5119dec6c50" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7496ef4df5119dec6c50">{"x":{"visdat":{"38d46313737":["function () ","plotlyVisDat"]},"cur_data":"38d46313737","attrs":{"38d46313737":{"labels":{},"values":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Gastos totales","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["ayuda a comunidades","material de trabajo","arriendo","material de trabajo","ofrenda pastor","ayuda a comunidades","ayuda a comunidades","arriendo","material de trabajo","ayuda a comunidades","ofrenda pastor","material de trabajo","ofrenda pastor","material de trabajo","ayuda a comunidades","ayuda a comunidades","material de trabajo","ayuda a comunidades","material de trabajo","arriendo","ayuda a comunidades","ayuda a comunidades","ofrenda pastor","ayuda a comunidades","ayuda a comunidades","ayuda a comunidades","ayuda a comunidades","ayuda a comunidades","arriendo","material de trabajo","ayuda a comunidades","ayuda a comunidades","ayuda a comunidades","material de trabajo","material de trabajo","material de trabajo","material de trabajo"],"values":[100,39.8,300,100,200,30,162.5,300,60,80,25,14,200,47.4,98.72,95.8,45.65,100,30,300,100,60,200,72.32,19,25,30.89,40,300,300,50,40,48,100,20,100,16.95],"type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="balance" class="section level1">
 <h1>Balance</h1>
-<div id="htmlwidget-daf84c23f4b9d07bf23a" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-daf84c23f4b9d07bf23a">{"x":{"visdat":{"867414b15d03":["function () ","plotlyVisDat"]},"cur_data":"867414b15d03","attrs":{"867414b15d03":{"x":{},"y":{},"marker":{"color":"rgb(49,130,189)"},"name":"Ingreso","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"867414b15d03.1":{"x":{},"y":{},"marker":{"color":"rgb(204,204,204)"},"name":"Gasto","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":100,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Fechas","tickangle":-45,"type":"category","categoryorder":"array","categoryarray":["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"],"y":[910.63,2017.61,1129,371.05,758,577,1599.23,1488.15],"marker":{"color":"rgb(49,130,189)","line":{"color":"rgba(31,119,180,1)"}},"name":"Ingreso","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"],"y":[819.29,1119.33,799.5,300.88,651.54,424.55,1750.32,1224.48],"marker":{"color":"rgb(204,204,204)","line":{"color":"rgba(255,127,14,1)"}},"name":"Gasto","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ae7b48b07b75ca644ad4" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ae7b48b07b75ca644ad4">{"x":{"visdat":{"38d44881134b":["function () ","plotlyVisDat"]},"cur_data":"38d44881134b","attrs":{"38d44881134b":{"x":{},"y":{},"marker":{"color":"rgb(49,130,189)"},"name":"Ingreso","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"38d44881134b.1":{"x":{},"y":{},"marker":{"color":"rgb(204,204,204)"},"name":"Gasto","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":100,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Fechas","tickangle":-45,"type":"category","categoryorder":"array","categoryarray":["Enero","Febrero","Marzo","Abril"]},"yaxis":{"domain":[0,1],"automargin":true,"title":""},"barmode":"group","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Enero","Febrero","Marzo","Abril"],"y":[302,1008.62,1200.31,543.03],"marker":{"color":"rgb(49,130,189)","line":{"color":"rgba(31,119,180,1)"}},"name":"Ingreso","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Enero","Febrero","Marzo","Abril"],"y":[439.8,971.5,1077.57,1362.16],"marker":{"color":"rgb(204,204,204)","line":{"color":"rgba(255,127,14,1)"}},"name":"Gasto","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="detalle-del-registro" class="section level1">
 <h1>Detalle del Registro</h1>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.0.3</code></pre>
+<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 4.0.3</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -2314,231 +2541,7 @@ Moneda
 <tbody>
 <tr>
 <td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-aporte hope arriendo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-90.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-90.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Cristhian Julio
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.66
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.66
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-comida jornada medica Hna Judith
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Hna Judith agosto
-</td>
-<td style="text-align:right;">
-60.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-60.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-ministerios
-</td>
-<td style="text-align:left;">
-curso sociedades bíblicas
-</td>
-<td style="text-align:right;">
-33.60
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-33.60
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-ministerios
-</td>
-<td style="text-align:left;">
-regalos vacacional
-</td>
-<td style="text-align:right;">
-120.25
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-120.25
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
+2021-01-07
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -2550,557 +2553,13 @@ ayuda a comunidades
 NA
 </td>
 <td style="text-align:left;">
-comida jornada medica
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ayuda a comunidades
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-comida jornada medica
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-ofrenda regalos vacacional Anita
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-20
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Karina Paredes
-</td>
-<td style="text-align:right;">
-319.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-319.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-18
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-ofrenda regalos vacacional María Paula
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-17
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-ofrenda regalos vacacional Jenny
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-14
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-José Analuisa
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-13
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-arriendo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-13
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ayuda a comunidades
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-kits alimenticios
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-13
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-30.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-30.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-12
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-interés a favor
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-12
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.66
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.66
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-11
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-12.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-12.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-11
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-María Paula
-</td>
-<td style="text-align:right;">
-18.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-18.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-07
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-inscripción emprendimiento
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-05
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Alonso y Anita
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-05
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-NA
+ayuda médica
 </td>
 <td style="text-align:right;">
 100.00
 </td>
 <td style="text-align:left;">
-Ingreso
+Gasto
 </td>
 <td style="text-align:left;">
 NA
@@ -3114,391 +2573,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-inscripción emprendimiento
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-inscripción emprendimiento
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-34.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-34.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-aporte hope ayuda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-500.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-aporte hope chile
-</td>
-<td style="text-align:right;">
-500.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-aporte hope arriendo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-110.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-aporte externo hope chile
-</td>
-<td style="text-align:right;">
-110.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ayuda a comunidades
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-103.47
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-compra medicinas
-</td>
-<td style="text-align:right;">
-103.47
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-Miky
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-inscripción emprendimiento
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ayuda a comunidades
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-implementos para jornada médica
-</td>
-<td style="text-align:right;">
-45.84
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-45.84
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-08-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-Ruben
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-inscripción emprendimiento
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-31
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-29
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-diezmo abril, mayo, junio, julio y agosto
-</td>
-<td style="text-align:right;">
-500.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-500.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-29
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-37 Anita Martínez, 7 tasa
-</td>
-<td style="text-align:right;">
-42.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-42.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-29
+2021-01-15
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -3510,10 +2585,10 @@ material de trabajo
 NA
 </td>
 <td style="text-align:left;">
-pago almuerzos jornada de salud
+compra candado
 </td>
 <td style="text-align:right;">
-22.50
+39.80
 </td>
 <td style="text-align:left;">
 Gasto
@@ -3522,7 +2597,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-22.50
+39.80
 </td>
 <td style="text-align:left;">
 USD
@@ -3530,359 +2605,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-07-29
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-inscripción empredimiento
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-29
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-mensual
-</td>
-<td style="text-align:left;">
-ofrenda mayo junio y julio
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-29
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-dominical
-</td>
-<td style="text-align:left;">
-ofrenda dominical 21 semanas
-</td>
-<td style="text-align:right;">
-525.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-525.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-21
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-21
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-21
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-María José
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-20
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-compra Carlos Granados
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-20
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Hna Judith
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-20
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Carol Coral
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-20
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ayuda a comunidades
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-ayuda humanitaria
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-17
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-15.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-15.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-15
+2021-01-15
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -3894,7 +2617,7 @@ arriendo
 NA
 </td>
 <td style="text-align:left;">
-NA
+enero
 </td>
 <td style="text-align:right;">
 300.00
@@ -3914,54 +2637,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-07-14
+2021-02-01
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-interés a favor
+material de trabajo
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+devolucion garantia
 </td>
 <td style="text-align:right;">
-0.23
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.23
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-14
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-transacciones
-</td>
-<td style="text-align:right;">
-2.38
+100.00
 </td>
 <td style="text-align:left;">
 Gasto
@@ -3970,7 +2661,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-2.38
+100.00
 </td>
 <td style="text-align:left;">
 USD
@@ -3978,25 +2669,25 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-07-13
+2021-02-01
 </td>
 <td style="text-align:left;">
-ayuda externa
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-aporte hope arriendo
+ofrenda pastor
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-arriendo Hope Quito
+ofrenda dominical y mensual
 </td>
 <td style="text-align:right;">
 200.00
 </td>
 <td style="text-align:left;">
-Ingreso
+Gasto
 </td>
 <td style="text-align:left;">
 NA
@@ -4010,775 +2701,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-07-13
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-aporte hope ayuda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-paquete de ayuda humanitaria Hope Quito
-</td>
-<td style="text-align:right;">
-500.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-500.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-10
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-07
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-06
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Alonso y Anita
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-07-03
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-Julio
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-29
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-25
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-22
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Alonso y Anita Quito
-</td>
-<td style="text-align:right;">
-75.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-75.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-22
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Alonso y Anita manta
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-16
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda especial
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Carlos Granados viveres
-</td>
-<td style="text-align:right;">
-35.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-35.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-adecuaciones
-</td>
-<td style="text-align:left;">
-bandejas de desinfección
-</td>
-<td style="text-align:right;">
-34.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-34.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-arriendo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Junio
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Manuela Sempértegui
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-10
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Hna Judith
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-10
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-cupcakes
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-10
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-publicidad facebook
-</td>
-<td style="text-align:right;">
-3.89
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-3.89
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-10
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-pago podadora abril y mayo
-</td>
-<td style="text-align:right;">
-46.66
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-46.66
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-09
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-pago libro Pablo Analuisa
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-11.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-11.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Alonso y Anita junio
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-arriendo y servicios básicos junio
-</td>
-<td style="text-align:right;">
-110.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-110.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-06-02
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-María José
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-27
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-Anonimo
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-26
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Rubén y Karina
-</td>
-<td style="text-align:right;">
-185.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-185.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-26
+2021-02-10
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -4790,10 +2713,10 @@ ayuda a comunidades
 NA
 </td>
 <td style="text-align:left;">
-ofrenda a Maritza Alban
+reembolso compras Pastor Johny
 </td>
 <td style="text-align:right;">
-100.00
+30.00
 </td>
 <td style="text-align:left;">
 Gasto
@@ -4802,7 +2725,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-100.00
+30.00
 </td>
 <td style="text-align:left;">
 USD
@@ -4810,54 +2733,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-26
+2021-02-10
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-ofrenda especial
+ayuda a comunidades
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-ofrenda Maritza, Ana Villarreal
+canastas 30 unidades
 </td>
 <td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.88
+162.50
 </td>
 <td style="text-align:left;">
 Gasto
@@ -4866,7 +2757,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-0.88
+162.50
 </td>
 <td style="text-align:left;">
 USD
@@ -4874,231 +2765,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-miky
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-23
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Cristhian
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-22
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-abono libro Pablo
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-22
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Hna Judith
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-20
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-19
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-18
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-José Analuisa
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-15
+2021-02-16
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -5110,7 +2777,7 @@ arriendo
 NA
 </td>
 <td style="text-align:left;">
-arriendo con descuento
+arriendo febrero
 </td>
 <td style="text-align:right;">
 300.00
@@ -5130,22 +2797,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-15
+2021-02-16
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-servicios basicos
+material de trabajo
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+22 mascarillas
 </td>
 <td style="text-align:right;">
-150.00
+60.00
 </td>
 <td style="text-align:left;">
 Gasto
@@ -5154,7 +2821,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-150.00
+60.00
 </td>
 <td style="text-align:left;">
 USD
@@ -5162,54 +2829,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-12
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Manuela Sempértegui
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-11
+2021-02-17
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-manejo de cuenta
+ayuda a comunidades
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+ayuda economica enfermedad
 </td>
 <td style="text-align:right;">
-0.44
+80.00
 </td>
 <td style="text-align:left;">
 Gasto
@@ -5218,7 +2853,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-0.44
+80.00
 </td>
 <td style="text-align:left;">
 USD
@@ -5226,263 +2861,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-11
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-11
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-08
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Mónica López
-</td>
-<td style="text-align:right;">
-30.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-30.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-07
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-María José
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-libro
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Flia Vargas Chilatra
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Flia. Sempértegui Coral
-</td>
-<td style="text-align:right;">
-30.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-carol
-</td>
-<td style="text-align:right;">
-30.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-pago compra biblia
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-04
+2021-02-21
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -5491,10 +2870,234 @@ Ahorros iglesia
 ofrenda pastor
 </td>
 <td style="text-align:left;">
-mensual
+NA
 </td>
 <td style="text-align:left;">
-ofrenda abril
+ofrenda dominical
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-26
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+galon de alcohol
+</td>
+<td style="text-align:right;">
+14.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+14.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-01
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ofrenda pastor
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+ofrenda dominical y mensual
+</td>
+<td style="text-align:right;">
+200.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+200.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-01
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+abono compra sombrillas
+</td>
+<td style="text-align:right;">
+47.40
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+47.40
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-07
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+productos banco de alimentos
+</td>
+<td style="text-align:right;">
+98.72
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+98.72
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-07
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+productos banco de alimentos
+</td>
+<td style="text-align:right;">
+95.80
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+95.80
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-07
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+saldo sombrillas, +8.25 ofrenda
+</td>
+<td style="text-align:right;">
+45.65
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+45.65
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-11
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+enfermedad
 </td>
 <td style="text-align:right;">
 100.00
@@ -5514,54 +3117,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-04
+2021-03-16
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Alonso y Anita
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-80.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-05-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
+material de trabajo
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-transacciones
+viaje a latacunga (viaticos)
 </td>
 <td style="text-align:right;">
-0.22
+30.00
 </td>
 <td style="text-align:left;">
 Gasto
@@ -5570,7 +3141,7 @@ Gasto
 NA
 </td>
 <td style="text-align:right;">
-0.22
+30.00
 </td>
 <td style="text-align:left;">
 USD
@@ -5578,359 +3149,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-05-04
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-arriendo mayo
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-30
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-interés a favor
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-30
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-transacciones
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-30
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-José Analuisa
-</td>
-<td style="text-align:right;">
-19.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-diezmo abril
-</td>
-<td style="text-align:right;">
-19.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-27
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Flia. Sempértegui Coral
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-carol
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-27
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-abono compra biblia
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-27
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Cristhian
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-27
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Hna Judith
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-50.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-17
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Hna Judith
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-Marzo y Abril
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-7.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-7.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-15
+2021-03-16
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -5940,431 +3159,47 @@ arriendo
 </td>
 <td style="text-align:left;">
 NA
-</td>
-<td style="text-align:left;">
-arriendo 50%
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-13
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-13
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-09
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Gustavo Obando
-</td>
-<td style="text-align:right;">
-25.01
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.01
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-09
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-María José
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-06
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-06
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-38071235 canal corporativo quito
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-04-06
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Flia Vargas Chilatra
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-40.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-31
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Alonso y Anita
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-28
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-manejo de cuenta
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-1.17
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-1.17
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-26
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:right;">
-44.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-44.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-26
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-servicios básicos
-</td>
-<td style="text-align:right;">
-46.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-46.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-26
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-arriendo abril
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-26
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
 </td>
 <td style="text-align:left;">
 arriendo marzo
 </td>
 <td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-23
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+enfermedad covid
+</td>
+<td style="text-align:right;">
 100.00
 </td>
 <td style="text-align:left;">
-Ingreso
+Gasto
 </td>
 <td style="text-align:left;">
 NA
@@ -6378,7 +3213,519 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-03-23
+2021-03-29
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+enfermedad covid
+</td>
+<td style="text-align:right;">
+60.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+60.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-04
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ofrenda pastor
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+ofrenda dominical y mensual
+</td>
+<td style="text-align:right;">
+200.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+200.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+productos banco de alimentos
+</td>
+<td style="text-align:right;">
+72.32
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+72.32
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+productos banco de alimentos
+</td>
+<td style="text-align:right;">
+19.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+19.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+productos banco de alimentos
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+productos banco de alimentos
+</td>
+<td style="text-align:right;">
+30.89
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+30.89
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+enfermedad covid
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+arriendo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+arriendo abril
+</td>
+<td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-15
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+elaboracion del estatuto y legalizacion
+</td>
+<td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-15
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+enfermedad covid
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-14
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+emprendimiento
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-21
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+ayuda a comunidades
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+compras para entregas
+</td>
+<td style="text-align:right;">
+48.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+48.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-21
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+elaboracion del estatuto y legalizacion
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-25
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+stickers iglesia
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-25
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+fondo a liquidar
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-28
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+material de trabajo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+fundas para alimentos, y material vario
+</td>
+<td style="text-align:right;">
+16.95
+</td>
+<td style="text-align:left;">
+Gasto
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+16.95
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-28
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -6390,7 +3737,7 @@ diezmos y ofrendas
 diezmo
 </td>
 <td style="text-align:left;">
-NA
+Jose Luis Analuisa
 </td>
 <td style="text-align:right;">
 20.00
@@ -6410,103 +3757,7 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-03-16
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-arriendo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-16
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Pablo Analuisa
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-mensual
-</td>
-<td style="text-align:left;">
-ofrenda marzo
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-se hizo paso está ofrenda con el diezmo
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-15
+2021-04-28
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -6518,19 +3769,19 @@ diezmos y ofrendas
 diezmo
 </td>
 <td style="text-align:left;">
-Juan Daniel
+NA
 </td>
 <td style="text-align:right;">
-100.00
+41.96
 </td>
 <td style="text-align:left;">
 Ingreso
 </td>
 <td style="text-align:left;">
-se hizo paso este diezmo con la ofrenda mensual
+NA
 </td>
 <td style="text-align:right;">
-100.00
+41.96
 </td>
 <td style="text-align:left;">
 USD
@@ -6538,7 +3789,71 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-03-11
+2021-04-27
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Alimentos mujeres con cancel
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-20
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-22
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -6570,409 +3885,25 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-03-08
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-pastel ?
-</td>
-<td style="text-align:right;">
-8.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-8.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-08
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-dominical
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-75.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-23, 1 y 8 de marzo
-</td>
-<td style="text-align:right;">
-75.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-08
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-libreria
-</td>
-<td style="text-align:right;">
-68.90
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-68.90
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-08
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-17.95
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-17.95
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-08
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-17.15
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-17.15
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-08
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-260.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-260.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-04
+2021-04-22
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
+donación
 </td>
 <td style="text-align:left;">
 NA
 </td>
-<td style="text-align:right;">
-25.00
-</td>
 <td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-01
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-adecuaciones
-</td>
-<td style="text-align:left;">
-cuota podadora y rastrillo
-</td>
-<td style="text-align:right;">
-23.33
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-23.33
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-01
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-37.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-37.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-03-01
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-35.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-35.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-28
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-mensual
-</td>
-<td style="text-align:left;">
-ofrenda marzo
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-28
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-transporte
-</td>
-<td style="text-align:right;">
-14.40
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-14.40
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-28
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-bolso
+Alimentos
 </td>
 <td style="text-align:right;">
 10.00
 </td>
 <td style="text-align:left;">
-Gasto
+Ingreso
 </td>
 <td style="text-align:left;">
 NA
@@ -6986,118 +3917,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-28
+2021-04-22
 </td>
 <td style="text-align:left;">
-ayuda externa
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-caja de mascarillas
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-28
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-flete libros
-</td>
-<td style="text-align:right;">
-10.35
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-32300.00
-</td>
-<td style="text-align:left;">
-COP
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-28
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-compra libros
-</td>
-<td style="text-align:right;">
-276.25
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-861888.00
-</td>
-<td style="text-align:left;">
-COP
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-28
-</td>
-<td style="text-align:left;">
-ayuda externa
-</td>
-<td style="text-align:left;">
-aporte hope arriendo
+donación
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-aporte hope arriendo
+donación
 </td>
 <td style="text-align:right;">
-1200.00
+125.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7106,7 +3941,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-1200.00
+125.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7114,13 +3949,13 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-23
+2021-04-15
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
+diezmo
 </td>
 <td style="text-align:left;">
 diezmo
@@ -7129,7 +3964,7 @@ diezmo
 NA
 </td>
 <td style="text-align:right;">
-50.00
+15.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7138,7 +3973,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-50.00
+15.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7146,13 +3981,42 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-23
+2021-04-15
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+alimentos
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-13
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 ofrenda
@@ -7160,8 +4024,11 @@ ofrenda
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+iglesia Hope
+</td>
 <td style="text-align:right;">
-6.25
+14.32
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7170,7 +4037,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-6.25
+14.32
 </td>
 <td style="text-align:left;">
 USD
@@ -7178,54 +4045,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-20
+2021-04-13
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-arriendo
+donación
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+canasta solidaria
 </td>
 <td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-pago desde cuenta Hna judith
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-17
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Pablo Analuisa
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
+5.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7234,7 +4069,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-100.00
+5.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7242,22 +4077,118 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-16
+2021-04-12
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+canasta solidaria alimentos
+</td>
+<td style="text-align:right;">
+106.75
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+106.75
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-09
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+alimentos para 11 de abril 2021
+</td>
+<td style="text-align:right;">
+80.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+80.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04-04
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+canasta de alimentos
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-30
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 diezmo
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:left;">
 Alonso y Anita
 </td>
 <td style="text-align:right;">
-100.00
+80.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7266,7 +4197,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-100.00
+80.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7274,77 +4205,10 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-16
+2021-03-30
 </td>
 <td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-dominical
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-16
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-22.50
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-22.50
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-16
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 diezmo
@@ -7352,8 +4216,11 @@ diezmo
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+Pastores Juan Daniel y Carol
+</td>
 <td style="text-align:right;">
-129.06
+60.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7362,7 +4229,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-129.06
+60.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7370,54 +4237,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-09
+2021-03-30
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-ofrenda pastor
+aporte Hope ayuda
 </td>
 <td style="text-align:left;">
-dominical
+Covid
 </td>
 <td style="text-align:left;">
-NA
+Hope Singapour
 </td>
 <td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-09
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-23.00
+200.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7426,7 +4261,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-23.00
+200.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7434,22 +4269,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-09
+2021-03-30
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
+aporte Hope arriendo
 </td>
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+Hope Singapour
+</td>
 <td style="text-align:right;">
-48.15
+200.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7458,7 +4293,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-48.15
+200.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7466,13 +4301,10 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-09
+2021-03-23
 </td>
 <td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 diezmo
@@ -7480,8 +4312,11 @@ diezmo
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+Ximena Pozo
+</td>
 <td style="text-align:right;">
-100.00
+12.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7490,7 +4325,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-100.00
+12.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7498,31 +4333,31 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-02
+2021-03-23
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-material de trabajo
+diezmo
 </td>
 <td style="text-align:left;">
-adecuaciones
+NA
 </td>
 <td style="text-align:left;">
-cuota podadora y rastrillo
+judith Durán
 </td>
 <td style="text-align:right;">
-23.33
+50.00
 </td>
 <td style="text-align:left;">
-Gasto
+Ingreso
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:right;">
-23.33
+50.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7530,31 +4365,31 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-02
+2021-03-23
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-ofrenda pastor
+donación
 </td>
 <td style="text-align:left;">
-dominical
+NA
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:right;">
-25.00
+134.31
 </td>
 <td style="text-align:left;">
-Gasto
+Ingreso
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:right;">
-25.00
+134.31
 </td>
 <td style="text-align:left;">
 USD
@@ -7562,19 +4397,179 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-02
+2021-03-21
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pastora Carol Coral
+</td>
+<td style="text-align:right;">
+12.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+12.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-20
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+alimentos
+</td>
+<td style="text-align:left;">
+José Luis Analuisa
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-20
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 eventos
 </td>
 <td style="text-align:left;">
-ventas
+paraguas
+</td>
+<td style="text-align:left;">
+José Luis Analuisa
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:left;">
+Ingreso
 </td>
 <td style="text-align:left;">
 NA
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-19
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+María José Vargas
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-16
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+María josé Vargas y Juan Ríos
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-16
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+canasta de amor
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+María josé Vargas y Juan Ríos
 </td>
 <td style="text-align:right;">
 30.00
@@ -7594,22 +4589,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-02
+2021-03-09
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
+donación
 </td>
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+Iglesia hope Ecuador
+</td>
 <td style="text-align:right;">
-8.65
+173.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -7618,7 +4613,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-8.65
+173.00
 </td>
 <td style="text-align:left;">
 USD
@@ -7626,371 +4621,51 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-02-02
+2021-03-01
 </td>
 <td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 diezmo
 </td>
 <td style="text-align:left;">
 NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-02-01
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-subarriendo
-</td>
-<td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-26
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-dominical
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-26
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-91.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-91.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-24
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-mensual
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-transferencia desde cuenta de cristhian
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-19
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-ministerios
-</td>
-<td style="text-align:left;">
-pilas
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-19
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-dominical
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-19
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-19
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-19
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-59.11
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-59.11
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-15
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-arriendo
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-se transfirió desde la otra cuenta de Rubén
-</td>
-<td style="text-align:right;">
-600.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-12
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-subarriendo
 </td>
 <td style="text-align:left;">
 Pablo Analuisa
 </td>
+<td style="text-align:right;">
+40.00
+</td>
 <td style="text-align:left;">
-completa los 50 de arriendo que tenía adelantado
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03-01
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+subarriendo
+</td>
+<td style="text-align:left;">
+50% arriendo
+</td>
+<td style="text-align:left;">
+Pablo Analuisa
 </td>
 <td style="text-align:right;">
 50.00
@@ -8010,54 +4685,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-01-12
+2021-03-01
 </td>
 <td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-ventas
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-14.70
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-14.70
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-12
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 diezmo
 </td>
 <td style="text-align:left;">
-Hna Judith
+NA
+</td>
+<td style="text-align:left;">
+Alonso y Anita
 </td>
 <td style="text-align:right;">
-50.00
+80.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -8066,7 +4709,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-50.00
+80.00
 </td>
 <td style="text-align:left;">
 USD
@@ -8074,13 +4717,10 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-01-12
+2021-02-26
 </td>
 <td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 ofrenda
@@ -8088,8 +4728,11 @@ ofrenda
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+Cristhian Valladares
+</td>
 <td style="text-align:right;">
-25.15
+10.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -8098,7 +4741,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-25.15
+10.00
 </td>
 <td style="text-align:left;">
 USD
@@ -8106,22 +4749,278 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-01-12
+2021-02-26
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pastor Juan Daniel
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-26
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
 diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+José Luis Analuisa
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-20
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Ximena Pozo
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-22
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Judith Durán
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-17
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Canasta de alimentos
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-17
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5canastas solidarias
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-17
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Canasta de alimentos
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-17
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+donación
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+14 canastas de alimentos
+</td>
+<td style="text-align:right;">
+70.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+70.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-08
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:left;">
 Rubén y Karina
 </td>
 <td style="text-align:right;">
-167.00
+150.62
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -8130,7 +5029,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-167.00
+150.62
 </td>
 <td style="text-align:left;">
 USD
@@ -8138,7 +5037,71 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-01-10
+2021-02-04
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+José Luis Analuisa
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-04
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pablo Analuisa
+</td>
+<td style="text-align:right;">
+35.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+35.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-04
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
@@ -8147,237 +5110,13 @@ Ahorros iglesia
 subarriendo
 </td>
 <td style="text-align:left;">
-Carlos Granados
-</td>
-<td style="text-align:left;">
 NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-07
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-adecuaciones
-</td>
-<td style="text-align:left;">
-cuota podadora y rastrillo
-</td>
-<td style="text-align:right;">
-31.34
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-31.34
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-06
-</td>
-<td style="text-align:left;">
-Ahorros iglesia
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-diezmo
-</td>
-<td style="text-align:left;">
-Alonso y Anita
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-100.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-05
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-fiestas de quito
-</td>
-<td style="text-align:right;">
-0.50
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0.50
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-05
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-eventos
-</td>
-<td style="text-align:left;">
-otros
-</td>
-<td style="text-align:left;">
-fiestas de quito
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-Ingreso
 </td>
 <td style="text-align:left;">
 Pablo Analuisa
 </td>
 <td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-05
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-material de trabajo
-</td>
-<td style="text-align:left;">
-compras
-</td>
-<td style="text-align:left;">
-pastel Jenny
-</td>
-<td style="text-align:right;">
-11.95
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-11.95
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-05
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-ofrenda pastor
-</td>
-<td style="text-align:left;">
-dominical
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-Gasto
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-05
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-111.95
+100.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -8386,7 +5125,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-111.95
+100.00
 </td>
 <td style="text-align:left;">
 USD
@@ -8394,54 +5133,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-01-05
-</td>
-<td style="text-align:left;">
-Efectivo
-</td>
-<td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
-</td>
-<td style="text-align:left;">
-depósito anterior
-</td>
-<td style="text-align:right;">
-14.50
-</td>
-<td style="text-align:left;">
-Ingreso
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-14.50
-</td>
-<td style="text-align:left;">
-USD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2020-01-01
+2021-02-03
 </td>
 <td style="text-align:left;">
 Ahorros iglesia
 </td>
 <td style="text-align:left;">
-Modificar saldo
+diezmo
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-Ingresos
+Ximena Pozo
 </td>
 <td style="text-align:right;">
-100.12
+12.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -8450,7 +5157,7 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-100.12
+12.00
 </td>
 <td style="text-align:left;">
 USD
@@ -8458,22 +5165,22 @@ USD
 </tr>
 <tr>
 <td style="text-align:left;">
-2020-01-01
+2021-01-28
 </td>
 <td style="text-align:left;">
-Efectivo
+Ahorros iglesia
 </td>
 <td style="text-align:left;">
-diezmos y ofrendas
-</td>
-<td style="text-align:left;">
-ofrenda
+diezmo
 </td>
 <td style="text-align:left;">
 NA
 </td>
+<td style="text-align:left;">
+Ximena Pozo
+</td>
 <td style="text-align:right;">
-1.60
+23.00
 </td>
 <td style="text-align:left;">
 Ingreso
@@ -8482,7 +5189,327 @@ Ingreso
 NA
 </td>
 <td style="text-align:right;">
-1.60
+23.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-03
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pastor Juan Daniel
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-03
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pastora Carol Coral
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-03
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+aporte Hope arriendo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pastores Andrew y Ruth
+</td>
+<td style="text-align:right;">
+400.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+400.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02-01
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+María José Vargas
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-01-21
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Judith Durán
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+50.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-17
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+subarriendo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Carlos Granados
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-01-18
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+María José Vargas
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-01-05
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Cristhian Valladares
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-04
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+diezmo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Pablo Analuisa
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:left;">
+USD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-01-03
+</td>
+<td style="text-align:left;">
+Ahorros iglesia
+</td>
+<td style="text-align:left;">
+servicios básicos
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Carlos Granados
+</td>
+<td style="text-align:right;">
+54.00
+</td>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+54.00
 </td>
 <td style="text-align:left;">
 USD
@@ -8508,7 +5535,7 @@ USD
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
